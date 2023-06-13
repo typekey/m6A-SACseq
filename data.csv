@@ -1,0 +1,7 @@
+sample,fastq_1,fastq_2,group,repeat,strandedness
+SAMPLE_PE,SAMPLE_PE_RUN1_1.fastq.gz,SAMPLE_PE_RUN1_2.fastq.gz,WT,1,forward
+SAMPLE_PE,SAMPLE_PE_RUN2_1.fastq.gz,SAMPLE_PE_RUN2_2.fastq.gz,WT,2,forward
+SAMPLE_SE,SAMPLE_SE_RUN1_1.fastq.gz,SAMPLE_PE_RUN2_2.fastq.gz,WT,3,forward
+SAMPLE_PE,SAMPLE_PE_RUN1_1.fastq.gz,SAMPLE_PE_RUN1_2.fastq.gz,KO,1,forward
+SAMPLE_PE,SAMPLE_PE_RUN2_1.fastq.gz,SAMPLE_PE_RUN2_2.fastq.gz,KO,2,forward
+SAMPLE_SE,SAMPLE_SE_RUN1_1.fastq.gz,SAMPLE_PE_RUN2_2.fastq.gz,KO,3,forward

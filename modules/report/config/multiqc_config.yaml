@@ -1,0 +1,10 @@
+title: "Nextflow RNA-seq demo"
+subtitle: "A pipeline for quantification of genomic features from short read data"
+
+report_header_info:
+    - Contact E-mail: 'baimoc@163.com'
+    - Application Type: 'RNA-seq'
+    - Project Type: 'Nextflow RNA-seq'
+
+custom_logo_url: 'https://www.nextflow.io'
+custom_logo_title: 'Center for Genomic Regulation'
