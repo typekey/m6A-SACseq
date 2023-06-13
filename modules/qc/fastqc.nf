@@ -25,7 +25,7 @@ process FASTQC_AFTER {
     input:
     path(cut_fastq1)
     path(cut_fastq2)
-    path(reprot)
+    // path(reprot)
     
     output:
     path '*.zip'

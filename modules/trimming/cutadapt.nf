@@ -10,11 +10,11 @@ process CUTADAPT_ADAPTER {
     output:
     path "*_cut_R1.fastq"
     path "*_cut_R2.fastq"
-    path "*_trimming_adapter.report", optional:true
+    // path "*_trimming_adapter.report", optional:true
 
     script:
     """
-    cutadapt -j ${params.cutadapt.threads} \
+    cutadapt -j ${params.threads.cutadapt} \
         -U 11 \
         --rename='{id}_{r1.cut_prefix} {comment}' \
         --max-n=0 -e 0.15 -q 20 --nextseq-trim=20 \
@@ -36,12 +36,12 @@ process CUTADAPT_PRIMER {
     input:
     path(cut_R1)
     path(cut_R2)
-    path(trimming_adapter)
+    // path(trimming_adapter)
 
     output:
     path "*_cut_R1.fastq.gz"
     path "*_cut_R2.fastq.gz"
-    path "*_trimming_primer.report", optional:true
+    // path "*_trimming_primer.report", optional:true
     // path "cut_adapter/${group}_cut_R2.fq.gz"
     // path "cut_adapter/${group}_short_R1.fq.gz"
     // path "cut_adapter/${group}_short_R2.fq.gz"
@@ -51,7 +51,7 @@ process CUTADAPT_PRIMER {
     script:
     { sampleId = cut_R1.name.toString().replace("_cut_R1.fastq", "") }
     """
-    cutadapt -j ${params.cutadapt.threads} \
+    cutadapt -j ${params.threads.cutadapt} \
         -m 15 \
         -u -11 \
         -n 2 \
