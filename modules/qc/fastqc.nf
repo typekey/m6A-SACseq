@@ -36,3 +36,23 @@ process FASTQC_AFTER {
     fastqc -f fastq -q ${cut_fastq1} ${cut_fastq2}
     """
 }
+
+process FASTQC_UNMAPPED {
+    debug params.debug
+    label 'process_low'
+
+    publishDir "${params.outdir.QC_UNMAPPED}/${sampleId}"
+
+    input:
+    tuple path(unmapped_fastq1), path(unmapped_fastq2)
+    // path(reprot)
+    
+    output:
+    path '*.zip'
+
+    script:
+    { sampleId = unmapped_fastq1.toString().split("_")[0..1].join("_") }
+    """
+    fastqc -f fastq -q ${unmapped_fastq1} ${unmapped_fastq2}
+    """
+}

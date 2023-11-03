@@ -12,7 +12,7 @@ process FALCO_BEFORE {
 
     script:
     """
-    falco ${fastq_1} ${fastq_1}
+    falco ${fastq_1} ${fastq_2}
     """
 }
 
@@ -33,24 +33,26 @@ process FALCO_AFTER {
     script:
     { sampleId = cut_fastq1.toString().split("_")[0..1].join("_") }
     """
-    falco ${cut_fastq2}
+    falco ${cut_fastq2} ${cut_fastq1}
     """
 }
 
-// process FALCO_AFTER {
-//     debug params.debug
-//     label 'process_low'
+process FALCO_UNMAPPED {
+    debug params.debug
+    label 'process_low'
 
-//     publishDir "${params.outdir.QC_BEFORE}"
+    publishDir "${params.outdir.QC_UNMAPPED}/${sampleId}"
 
-//     input:
-//     tuple val(group), val(replicate), path(fastq_1), path(fastq_2)
+    input:
+    path(unmapped_fastq1)
+    path(unmapped_fastq2)
     
-//     output:
-//     '*'
+    output:
+    path '*'
 
-//     script:
-//     """
-//     falco ${fastq_1}
-//     """
-// }
+    script:
+    { sampleId = unmapped_fastq1.toString().split("_")[0..1].join("_") }
+    """
+    falco ${unmapped_fastq1} ${unmapped_fastq2}
+    """
+}

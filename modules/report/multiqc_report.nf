@@ -5,7 +5,6 @@ process MULTIQC_REPORT {
 
     input:
     path zip
-    val config
 
     output:
     path '*'
@@ -13,9 +12,9 @@ process MULTIQC_REPORT {
 
     script:
     """
-    cp $config/* .
+    cp ${params.reprot_config}/* .
     echo "custom_logo: \$PWD/logo.png" >> multiqc_config.yaml
-    multiqc .
+    multiqc $zip
     """
 }
 // # echo multiqc -f -m fastqc -n ${report_name} ${fastqc_data}
